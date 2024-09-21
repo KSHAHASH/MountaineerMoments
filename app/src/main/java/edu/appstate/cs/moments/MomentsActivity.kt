@@ -42,9 +42,6 @@ class MomentsActivity : AppCompatActivity() {
         binding.prevButton.setOnClickListener {
                 updatePrevQuestion()
         }
-
-
-
     }
 
     private fun updateNextQuestion() {
@@ -65,7 +62,6 @@ class MomentsActivity : AppCompatActivity() {
 
         }
     }
-
 
     private fun updatePrevQuestion() {
         // calling the viewModel's prevMoment()
