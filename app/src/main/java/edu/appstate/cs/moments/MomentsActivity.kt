@@ -52,17 +52,10 @@ class MomentsActivity : AppCompatActivity() {
         if (momentsViewModel.currentIndex < momentsViewModel.listSize - 1) {
             // Update the index to show the next moment
             momentsViewModel.nextMoment()
+            updateAndBind()
+        }
 
-            // Get the updated data from the ViewModel
-            val currentTitleId = momentsViewModel.currentTitle
-            val currentMomentId = momentsViewModel.currentMoment
-            val currentTimeStamp = momentsViewModel.currentTimeStamp
-
-            // Update the UI with the next moment's data
-            binding.titleTextView.text = currentTitleId
-            binding.momentTextView.text = currentMomentId
-            binding.timeStampView.text = currentTimeStamp
-        } else {
+        else {
             // Show a Snackbar when already at the last moment
             Snackbar.make(
                 binding.root,
@@ -86,17 +79,22 @@ class MomentsActivity : AppCompatActivity() {
                 Snackbar.LENGTH_SHORT
             ).show()
         }
-            // Get the updated data from the ViewModel
-            val currentTitleId = momentsViewModel.currentTitle
-            val currentMomentId = momentsViewModel.currentMoment
-            val currentTimeStamp = momentsViewModel.currentTimeStamp
-
-            // Update the UI with the previous moment's data
-            binding.titleTextView.text = currentTitleId
-            binding.momentTextView.text = currentMomentId
-            binding.timeStampView.text = currentTimeStamp
-
+         updateAndBind()
 
     }
+
+    private fun updateAndBind(){
+        // Get the updated data from the ViewModel
+        val currentTitleId = momentsViewModel.currentTitle
+        val currentMomentId = momentsViewModel.currentMoment
+        val currentTimeStamp = momentsViewModel.currentTimeStamp
+
+        // Update the UI with the previous moment's data
+        binding.titleTextView.text = currentTitleId
+        binding.momentTextView.text = currentMomentId
+        binding.timeStampView.text = currentTimeStamp
+
+    }
+
     }
 
